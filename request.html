@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="request.css">
+    <link rel="stylesheet" href="bootstrap-4.3.1-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bootstrap-4.3.1-dist/css/glyphicon.css">
+    <link rel="stylesheet" 
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="jQuery/jQuery.min.js"></script>
+    <script src="jQuery/popper.min.js"></script>
+    <script src="bootstrap-4.3.1-dist/js/bootstrap.min.js"></script>
+    <title>REQUEST PAGE</title>
+    <style>
+
+.container {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.chat-box {
+    width: 400px;
+    height: 0;
+    background-color: #fff;
+    overflow: hidden;
+    border-radius: 10px;
+    position: relative;
+    overflow-y: auto;
+    transition-duration: 2s;
+}
+
+.client {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    height: 80px;
+    background-color: #77b3d4;
+    padding: 15px;
+}
+
+.client img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.client-info {
+    color: #fff;
+    padding: 15px;
+}
+
+.client-info p {
+    color: #008000;
+    font-weight: bold;
+}
+
+/* CHAT SECTION */
+.chats {
+    width: 100%;
+    padding: 10px 15px; /* Adjusted padding */
+    color: #fff;
+    position: relative;
+    font-size: small;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Added */
+    overflow-y: auto; /* Added */
+    height: calc(100% - 165px);
+}
+
+.client-chat {
+    width: 60%;
+    word-wrap: break-word;
+    padding: 7px 10px;
+    background-color: grey;
+    border-radius: 10px 10px 10px 0;
+    margin: 10px 0;
+}
+
+.my-chat {
+    width: 60%;
+    word-wrap: break-word;
+    padding: 7px 10px;
+    background-color: #008000;
+    border-radius: 10px 10px 0 10px;
+    margin: 5px 0 5px auto;
+}
+
+/* input section */
+
+.input-chat {
+    display: flex;
+    align-items: center;
+    width: 100%; 
+    height: 65px;
+    background-color: #fff;
+    padding: 15px;
+    overflow: hidden;
+    position: absolute;
+    bottom: 0;
+}
+
+.input-chat input {
+    width: calc(100% - 40px);
+    height: 100%;
+    background-color: rgb(230, 230, 230);
+    border-radius: 50px;
+    color: #000;
+    font-size: small;
+    padding: 0 15px;
+}
+
+.send-button {
+    width: 40px;
+    height: 40px;
+    background-color: transparent;
+    overflow: hidden;
+    position: relative;
+    margin-left: 5px;
+    cursor: pointer;
+    transition: 0.4s ease-in-out;
+}
+
+.send-button:active {
+    transform: scale(0.85);
+}
+
+.send-button img {
+    width: 100%;
+    height: 100%;
+}
+
+/* CHAT BUTTON */
+.chat-btn {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background-color: #fff;
+    cursor: pointer;
+    overflow: hidden;
+    position: fixed;
+    bottom: 20px;
+}
+
+.chat-btn img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 5px;
+    transition: 0.4s ease-in-out;
+}
+
+.chat-btn:hover {
+    transform: rotate(30deg);
+}
+
+.hide {
+    height: 450px;
+    transition-duration: 2s;
+}
+</style>
+</head>
+<body>
+    
+    <div class="container-fluid">
+
+        <nav class="navbar">
+        <div class="logo">
+            <a href="index.html" class="navbar-brand">
+                <img src="logo.jpg" alt="" width="40px">
+                <span class="brand-text">
+                    HOME-SERVICES SYSTEM
+                </span>
+            </a>
+        </div>
+
+    </nav>
+
+
+    <div class="content">
+
+        <h1>OUR SERVICES</h1>
+
+
+        <div class="row">
+            
+            <div class="col-md-4">
+                <div class="service">
+                    <div class="box" data-toggle="modal" data-target="#modal1">
+                        <div class="icon-box">
+                            <i class="fas fa-tshirt"></i>
+                        </div>
+                    </div>
+                    <h3>LAUNDRY</h3>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="service">
+                    <div class="box" data-toggle="modal" data-target="#modal2">
+                        <div class="icon-box">
+                            <i class="fas fa-utensils"></i>
+                        </div>
+                    </div>
+                    <h3>CATERING</h3>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="service">
+                    <div class="box" data-toggle="modal" data-target="#modal3">
+                        <div class="icon-box">
+                            <i class="fas fa-drumstick-bite"></i>
+                        </div>
+                    </div>
+                    <h3>POULTRY</h3>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row">
+            
+            <div class="col-md-4">
+                <div class="service">
+                    <div class="box" data-toggle="modal" data-target="#modal4">
+                        <div class="icon-box">
+                            <i class="fas fa-wrench"></i>
+                        </div>
+                    </div>
+                    <h3>PLUMBING</h3>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="service">
+                    <div class="box" data-toggle="modal" data-target="#modal5">
+                        <div class="icon-box">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                    </div>
+                    <h3>GARDENING</h3>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="service">
+                    <div class="box" data-toggle="modal" data-target="#modal6">
+                        <div class="icon-box">
+                            <i class="fas fa-broom"></i>
+                        </div>
+                    </div>
+                    <h3>CLEANING</h3>
+                </div>
+            </div>
+
+        </div>
+
+        <!------ MODAL FORMS ----->
+
+        <!-- modal form 1 -->
+        <div class="modal" id="modal1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Fill the Laundry form below</h3>
+                        </div>
+                        <div class="card-body">
+                            <form action="" method="">
+                                <div class="form-group">
+                                    <label for="clothType">Select the type of clothes:</label>
+                                    <select name="" id="laundry" class="form-control">
+                                        <option value="1000">Light Clothes</option>
+                                        <option value="3000">Heavy Clothes</option>
+                                        <option value="2000">Mixed Clothes</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="firstName">First Name:</label>
+                                    <input type="text" name="firstName" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="lastName">Last Name:</label>
+                                    <input type="text" name="lastName" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="roomsNumber">Phone:</label>
+                                    <input type="text" name="phone" class="form-control" maxlength="10" required>
+                                </div>
+                                <div class="form-group" hidden>
+                                    <label for="serviceType">Service Type</label>
+                                    <input type="text" name="serviceType" value="Laundry">
+                                </div>
+                                <div class="form-group">
+                                    <label for="clothNumber">Enter the number of clothes:</label>
+                                    <input type="number" name="orderNumber" id="clothNumber" class="form-control" min="1">
+                                </div>
+                                <div class="form-group">
+                                    <label for="totalCost">Total Cost</label>
+                                    <input type="text" name="totalCOST" id="laundryCOST" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <button class="btn btn-primary" name="submit_btn" type="submit">Submit</button>
+                                    <button class="btn btn-danger" data-dismiss="modal">Close</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+                <!-- modal form 2 -->
+        <div class="modal" id="modal2">
+            <div class="modal-dialog">
+                <div class="modal-content">
+        
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Fill the Catering form below</h3>
+                        </div>
+                        <div class="card-body">
+                            <form action="" method="">
+                                <div class="form-group">
+                                    <label for="cateringType">Select the type of catering service:</label>
+                                    <select id="catering" class="form-control">
+                                        <option value="1000">Small Event Catering Services</option>
+                                        <option value="2000">Medium Event Catering Services</option>
+                                        <option value="3000">Large Event Catering Services</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="firstName">First Name:</label>
+                                    <input type="text" name="firstName" class="form-control" id="triggerInput">
+                                </div>
+                                <div class="form-group">
+                                    <label for="lastName">Last Name:</label>
+                                    <input type="text" name="lastName" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label for="roomsNumber">Phone:</label>
+                                    <input type="text" name="phone" class="form-control" maxlength="10" required>
+                                </div>
+                                <div class="form-group" hidden>
+                                    <label for="serviceType">Service Type</label>
+                                    <input type="text" name="serviceType" value="Catering">
+                                </div>                                
+                                <div class="form-group">
+                                     <label for="clothType">Enter the number of plates:</label>
+                                    <input type="number" name="orderNumber" id="plateNumber" class="form-control" min="1" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Total Cost</label>
+                                    <input type="text" name="totalCOST" id="cateringCost" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <button class="btn btn-primary" name="submit_btn" type="submit">Submit</button>
+                                    <button class="btn btn-danger" data-dismiss="modal">Close</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+        
+                </div>
+            </div>
+        </div>
+
+             <!-- modal form 3 -->
+        <div class="modal" id="modal3">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                        
+                    <div class="card">
+                        <div class="card-header">
+                             <h3>Fill the Poultry form below</h3>
+                        </div>
+                        <div class="card-body">
+                            <form action="" method="">
+                                <div class="form-group">
+                                    <label for="poultryType">Select the scale of Poultry:</label>
+                                    <select id="poultryType" class="form-control">
+                                        <option value="1000">Small Scale</option>
+                                        <option value="2000">Medium Scale</option>
+                                        <option value="3000">Large Scale</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="firstName">First Name:</label>
+                                    <input type="text" name="firstName" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="lastName">Last Name:</label>
+                                    <input type="text" name="lastName" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="roomsNumber">Phone:</label>
+                                    <input type="text" name="phone" class="form-control" maxlength="10" required>
+                                </div>
+                                <div class="form-group" hidden>
+                                    <label for="serviceType">Service Type</label>
+                                    <input type="text" name="serviceType" value="Poultry">
+                                </div>
+                                <div class="form-group">
+                                    <label for="clothType">Enter the number of chicken:</label>
+                                    <input type="number" name="orderNumber" id="chickenNumber" class="form-control" min="1" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Total Cost</label>
+                                    <input type="text" name="totalCOST" id="poultryCost" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <button class="btn btn-primary" name="submit_btn" type="submit">Submit</button>
+                                    <button class="btn btn-danger" data-dismiss="modal">Close</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                        
+                </div>
+            </div>
+        </div>
+
+
+        <!-- modal form 4 -->
+        <div class="modal" id="modal4">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                        
+                    <div class="card">
+                        <div class="card-header">
+                             <h3>Fill the Plumbing form below</h3>
+                        </div>
+                        <div class="card-body">
+                            <form action="" method="">
+                                <div class="form-group">
+                                    <label for="plumbingType">Select the size of Residence for plumbing Service:</label>
+                                    <select id="plumbingType" class="form-control">
+                                        <option value="1000">Small Size Building</option>
+                                        <option value="2000">Medium Size Building</option>
+                                        <option value="3000">Large Size Building</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="firstName">First Name:</label>
+                                    <input type="text" name="firstName" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="lastName">Last Name:</label>
+                                    <input type="text" name="lastName" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="roomsNumber">Phone:</label>
+                                    <input type="text" name="phone" class="form-control" maxlength="10" required>
+                                </div>
+                                <div class="form-group" hidden>
+                                    <label for="serviceType">Service Type</label>
+                                    <input type="text" name="serviceType" value="Plumbing">
+                                </div>
+                                <div class="form-group">
+                                    <label for="roomNumber">Enter the number of rooms:</label>
+                                    <input type="number" name="orderNumber" id="pRoomNumber" class="form-control" min="1" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Total Cost</label>
+                                    <input type="text" name="totalCOST" id="plumbingCost" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <button class="btn btn-primary" name="submit_btn" type="submit">Submit</button>
+                                    <button class="btn btn-danger" data-dismiss="modal">Close</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                        
+                </div>
+            </div>
+        </div>
+
+
+                <!-- modal form 5 -->
+        <div class="modal" id="modal5">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                        
+                    <div class="card">
+                        <div class="card-header">
+                             <h3>Fill the Gardening form below</h3>
+                        </div>
+                        <div class="card-body">
+                            <form action="" method="">
+                                <div class="form-group">
+                                    <label for="clothType">Select the size of Garden:</label>
+                                    <select id="gardeningSize" class="form-control">
+                                        <option value="1000">Small Size Garden</option>
+                                        <option value="2000">Medium Size Garden</option>
+                                        <option value="3000">Large Size Garden</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="firstName">First Name:</label>
+                                    <input type="text" name="firstName" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="lastName">Last Name:</label>
+                                    <input type="text" name="lastName" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="roomsNumber">Phone:</label>
+                                    <input type="text" name="phone" class="form-control" maxlength="10" required>
+                                </div>
+                                <div class="form-group" hidden>
+                                    <label for="serviceType">Service Type</label>
+                                    <input type="text" name="serviceType" value="Gardening">
+                                </div>                               
+                                <div class="form-group">
+                                    <label for="clothType">Enter the number of Gardens:</label>
+                                    <input type="number" name="orderNumber" id="gardeningNumber" class="form-control" min="1" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Total Cost</label>
+                                    <input type="text" name="totalCOST" id="gardeningCost" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <button class="btn btn-primary" name="submit_btn" type="submit">Submit</button>
+                                    <button class="btn btn-danger" data-dismiss="modal">Close</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                        
+                </div>
+            </div>
+        </div>
+
+ 
+        <!-- modal form 6 -->
+        <div class="modal" id="modal6">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                        
+                    <div class="card">
+                        <div class="card-header">
+                             <h3>Fill the Cleaning form below</h3>
+                        </div>
+                        <div class="card-body">
+                            <form action="" method="">
+                                <div class="form-group">
+                                    <label for="homeType">Select the size of Residence requiring cleaning:</label>
+                                    <select id="homeType" class="form-control">
+                                        <option value="1000">Small Building</option>
+                                        <option value="2000">Medium Building</option>
+                                        <option value="3000">Large Building</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="firstName">First Name:</label>
+                                    <input type="text" name="firstName" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="lastName">Last Name:</label>
+                                    <input type="text" name="lastName" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="roomsNumber">Phone:</label>
+                                    <input type="text" name="phone" class="form-control" maxlength="10" required>
+                                </div>
+                                <div class="form-group" hidden>
+                                    <label for="serviceType">Service Type</label>
+                                    <input type="text" name="serviceType" value="Cleaning">
+                                </div>
+                                <div class="form-group">
+                                    <label for="roomsNumber">Enter the number of rooms:</label>
+                                    <input type="number" name="orderNumber" id="roomsNumber" class="form-control" min="1" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Total Cost</label>
+                                    <input type="text" name="totalCOST" id="totalCleaning" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <button class="btn btn-primary" name="submit_btn" type="submit">Submit</button>
+                                    <button class="btn btn-danger" data-dismiss="modal">Close</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                        
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    </div>
+
+    <script>
+
+        // LAUNDRY
+        function updateLaundry() {
+            const clothTYPE = parseInt(document.getElementById("laundry").value);
+            const clothNUMBER = parseInt(document.getElementById("clothNumber").value);
+
+            const laundryCost = clothTYPE * clothNUMBER;
+
+            document.getElementById("laundryCOST").value = laundryCost;
+        }
+
+        document.getElementById("laundry").addEventListener("change", updateLaundry);
+        document.getElementById("clothNumber").addEventListener("input", updateLaundry);
+
+
+        // CATERING
+        function updateCatering(){
+            const cateringType = parseInt(document.getElementById("catering").value);
+            const plateNUMBER = parseInt(document.getElementById("plateNumber").value);
+
+            const cateringCOST = cateringType * plateNUMBER;
+
+            document.getElementById("cateringCost").value = cateringCOST;
+        }
+
+        document.getElementById("catering").addEventListener("change", updateCatering);
+        document.getElementById("plateNumber").addEventListener("input", updateCatering);
+
+
+        // POULTRY
+                function updatePoultry(){
+            const poultryType = parseInt(document.getElementById("poultryType").value);
+            const chickenNumber = parseInt(document.getElementById("chickenNumber").value);
+
+            const poultryCost = poultryType * chickenNumber;
+
+            document.getElementById("poultryCost").value = poultryCost;
+        }
+
+        document.getElementById("poultryType").addEventListener("change", updatePoultry);
+        document.getElementById("chickenNumber").addEventListener("input", updatePoultry);
+
+
+        // PLUMBING
+                function updatePLUMBING(){
+            const plumbingType = parseInt(document.getElementById("plumbingType").value);
+            const pRoomNumber = parseInt(document.getElementById("pRoomNumber").value);
+
+            const plumbingCost = plumbingType * pRoomNumber;
+
+            document.getElementById("plumbingCost").value = plumbingCost;
+        }
+
+        document.getElementById("plumbingType").addEventListener("change", updatePLUMBING);
+        document.getElementById("pRoomNumber").addEventListener("input", updatePLUMBING);
+
+
+        // GARDENING
+                function updateGARDENING(){
+            const gardeningSize = parseInt(document.getElementById("gardeningSize").value);
+            const gardeningNumber = parseInt(document.getElementById("gardeningNumber").value);
+
+            const gardeningCost = gardeningSize * gardeningNumber;
+
+            document.getElementById("gardeningCost").value = gardeningCost;
+        }
+
+        document.getElementById("gardeningSize").addEventListener("change", updateGARDENING);
+        document.getElementById("gardeningNumber").addEventListener("input", updateGARDENING);
+
+
+        // CLEANING
+                function updateCLEANING(){
+            const homeType = parseInt(document.getElementById("homeType").value);
+            const roomsNumber = parseInt(document.getElementById("roomsNumber").value);
+
+            const totalCleaning = homeType * roomsNumber;
+
+            document.getElementById("totalCleaning").value = totalCleaning;
+        }
+
+        document.getElementById("homeType").addEventListener("change", updateCLEANING);
+        document.getElementById("roomsNumber").addEventListener("input", updateCLEANING);
+    </script>
+</body>
+</html>

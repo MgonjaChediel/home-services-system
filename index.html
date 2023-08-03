@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="bootstrap-4.3.1-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bootstrap-4.3.1-dist/css/glyphicon.css">
+    <link rel="stylesheet" href="fontawesome-free-6.2.1-web/css/all.min.css">
+    <script src="jQuery/jQuery.min.js"></script>
+    <script src="jQuery/popper.min.js"></script>
+    <script src="bootstrap-4.3.1-dist/js/bootstrap.min.js"></script>
+    <title>CLIENT DASHBOARD</title>
+    <style>
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.chat-box {
+    width: 400px;
+    height: 0;
+    background-color: #fff;
+    overflow: hidden;
+    border-radius: 10px;
+    position: relative;
+    overflow-y: auto;
+    transition-duration: 2s;
+}
+
+.client {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    height: 80px;
+    background-color: #77b3d4;
+    padding: 15px;
+}
+
+.client img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.client-info {
+    color: #fff;
+    padding: 15px;
+}
+
+.client-info p {
+    color: #008000;
+    font-weight: bold;
+}
+
+/* CHAT SECTION */
+.chats {
+    width: 100%;
+    padding: 10px 15px; /* Adjusted padding */
+    color: #fff;
+    position: relative;
+    font-size: small;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Added */
+    overflow-y: auto; /* Added */
+    height: calc(100% - 165px);
+}
+
+.client-chat {
+    width: 60%;
+    word-wrap: break-word;
+    padding: 7px 10px;
+    background-color: grey;
+    border-radius: 10px 10px 10px 0;
+    margin: 10px 0;
+}
+
+.my-chat {
+    width: 60%;
+    word-wrap: break-word;
+    padding: 7px 10px;
+    background-color: #008000;
+    border-radius: 10px 10px 0 10px;
+    margin: 5px 0 5px auto;
+}
+
+/* input section */
+
+.input-chat {
+    display: flex;
+    align-items: center;
+    width: 100%; 
+    height: 65px;
+    background-color: #fff;
+    padding: 15px;
+    overflow: hidden;
+    position: absolute;
+    bottom: 0;
+}
+
+.input-chat input {
+    width: calc(100% - 40px);
+    height: 100%;
+    background-color: rgb(230, 230, 230);
+    border-radius: 50px;
+    color: #000;
+    font-size: small;
+    padding: 0 15px;
+}
+
+.send-button {
+    width: 40px;
+    height: 40px;
+    background-color: transparent;
+    overflow: hidden;
+    position: relative;
+    margin-left: 5px;
+    cursor: pointer;
+    transition: 0.4s ease-in-out;
+}
+
+.send-button:active {
+    transform: scale(0.85);
+}
+
+.send-button img {
+    width: 100%;
+    height: 100%;
+}
+
+/* CHAT BUTTON */
+.chat-btn {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background-color: #fff;
+    cursor: pointer;
+    overflow: hidden;
+    position: fixed;
+    bottom: 20px;
+}
+
+.chat-btn img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 5px;
+    transition: 0.4s ease-in-out;
+}
+
+.chat-btn:hover {
+    transform: rotate(30deg);
+}
+
+.hide {
+    height: 450px;
+    transition-duration: 2s;
+}
+</style>
+</head>
+<body>
+
+    <div class="container-fluid">
+        <nav class="navbar">
+
+            <div class="logo">
+                <a href="#" class="navbar-brand">
+                    <img src="logo.jpg" alt="" width="40px">
+                    <span class="brand-text">
+                        HOME-SERVICES SYSTEM
+                    </span>
+                </a>
+            </div>
+
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a href="message.html" class="nav-link">MESSAGE</a>
+                </li>
+            </ul>
+        </nav>
+            
+            <div class="content">
+                <h1>WELCOME TO HOME-SERVICES SYSTEM</h1>
+                <p>
+                    Providing an effortless service to your home is what we strive to achieve
+                </p>
+
+                <div>
+                    <button type="button" onclick="requestPage()" ><span></span>REQUEST NOW</button>
+                </div>
+
+            </div>
+
+    </div>
+
+
+    <script>
+        function requestPage(){
+            window.location.href = "request.html";
+        }
+    </script>
+</body>
+</html>
